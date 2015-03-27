@@ -7,25 +7,25 @@
 
 tallies = {}
 
-shipments.each do |s|
-  if ! tallies.has_key?(s.keys)
-    tallies[s.keys] = []
+shipments.each do |k, v|
+  if ! tallies.has_key?(k)
+    tallies[k] = nil
   end
-    
-  tallies[s.keys].push(s.values).flatten
+
+  tallies[k] = v.map {|i| {i => v.count(i)}  }
 end
 
 # At this point, 'tallies' should look like this: {"RBM263575" => [31236270002605, 31236270002605], "RBM263575" => ["31236270002605"]}
-counts = {}
+# counts = {}
 
-tallies.each do |k, v|
-  if ! counts.has_key?(k)
-    counts[k] = {}
+# tallies.each do |k, v|
+#   if ! counts.has_key?(k)
+#     counts[k] = {}
     
-    v.each do |i|
+#     v.each do |i|
 
-    end
-  else
-    v.map {|i| v.count(i)}
-  end
-end
+#     end
+#   else
+#     v.map {|i| v.count(i)}
+#   end
+# end
